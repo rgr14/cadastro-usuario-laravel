@@ -16,14 +16,15 @@ class Usuario extends Model
 
     public static function listar(int $limite)
     {
-        $sql = self::select([
+        return self::select([
             'id',
             'nome',
             'email',
             'senha',
             'data_cadastro'
         ])
-        ->limit($limite);
+        ->limit($limite)
+        ->get();
     }
 
     public static function  cadastrar(Request $request)
