@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Usuario;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function (){
     Route::get('listar', function (){
-        return ["a","b","c","d"];
+        return Usuario::listar(10);
     });
 
-    Route::post('cadastrar', function(){
-        
-    });
+    Route::post('cadastrar', "App\Http\Controllers\API\Usuario@salvar");
 });
